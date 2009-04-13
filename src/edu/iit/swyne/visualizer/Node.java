@@ -1,14 +1,13 @@
 package edu.iit.swyne.visualizer;
 
-import processing.core.PApplet;
 import processing.core.PConstants;
 
 public class Node {
 
-	private PApplet p;
+	protected Graph p;
 	private int color, textColor;
 	private float x, y, width, height;
-	private String label;
+	protected String label;
 
 	public Node(Graph p, float x, float y, int width, int height, String label) {
 		this.p = p;
@@ -45,6 +44,18 @@ public class Node {
 	}
 
 	public void update() {
+	}
+
+	public boolean collide(int x, int y) {
+		return x <= this.x+width/2 && x >= this.x-width/2 && y <= this.y+height/2 && y >= this.y-height/2;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
 	}
 
 }
